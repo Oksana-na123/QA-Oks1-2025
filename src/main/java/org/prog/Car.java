@@ -6,11 +6,16 @@ public class Car {
 
     public String color;
     public String model;
+    public String going;
 
     //TODO: Add method parameter with destination
     public void goTo() {
         System.out.println(color + " car is going somewhere new!");
+        System.out.println(" The " + color + " will go to " + going);
     }
+
+
+
 
     public static void goToStatic(){
         System.out.println("this is static method");
@@ -19,7 +24,10 @@ public class Car {
     public String carDescription() {
         //smth is happening here
         return "This car is a " + color + " " + model;
+
     }
+
+
 
 //    public void refuel(String fuelType)
 //    {}

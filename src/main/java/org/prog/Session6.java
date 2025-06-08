@@ -25,6 +25,11 @@ public class Session6 {
         aliceCar.model = "3";
         bobCar.color = "red";
 
+        aliceCar.going = "Kyiv";
+        bobCar.going = "Lviv";
+
+        System.out.println(aliceCar.color + " is going to " + aliceCar.going);
+        System.out.println(bobCar.color + " is going to " + bobCar.going);
 //        System.out.println(aliceCar.color);
 //        System.out.println(bobCar.color);
 
