@@ -15,16 +15,18 @@ public class Planehomework {
             hangar[i] = new Plane();
 
             hangar[i].flight = UUID.randomUUID().toString();
-            System.out.println(UUID.randomUUID().toString());
 
             hangar[i].maxpassengers = random.nextInt(201);
-            System.out.println(random.nextInt(100, 201));
 
             hangar[i].realpassengers = random.nextInt(hangar[i].maxpassengers + 1);
-            System.out.println(random.nextInt(hangar[i].maxpassengers + 1));
+
+            if ( hangar[i].realpassengers >= hangar[i].maxpassengers/2) {
 
 
-            System.out.println("The plane ID " + hangar[i].flight + " has seating places " + hangar[i].maxpassengers + " there is aboard " + hangar[i].realpassengers + " passengers" );
+
+                System.out.println("The plane has ID " + hangar[i].flight + " and has real passangers " + hangar[i].realpassengers + " max passangers on the board are " + hangar[i].maxpassengers);
+
+            }
 
 
         }
