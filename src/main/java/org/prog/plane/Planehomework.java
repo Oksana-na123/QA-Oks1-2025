@@ -6,36 +6,83 @@ import java.util.UUID;
 public class Planehomework {
     public static void main(String[] args) {
 
-        Plane[] hangar = new Plane[51];
+        Plane[] hangar = new Plane[50];
 
         Random random = new Random();
 
-        for (int i = 0; i < 51; i++) {
+        for (int i = 0; i < hangar.length; i++) {
 
             hangar[i] = new Plane();
 
             hangar[i].flight = UUID.randomUUID().toString();
 
-            hangar[i].maxpassengers = random.nextInt(201);
+            hangar[i].maxpassengers = random.nextInt(1, 201);
 
             hangar[i].realpassengers = random.nextInt(hangar[i].maxpassengers + 1);
 
-            //if (hangar[i].realpassengers >= hangar[i].maxpassengers / 2) {
-            double persent = (hangar[i].realpassengers * 100 / hangar[i].maxpassengers);
-            System.out.println(hangar[i].realpassengers * 100 / hangar[i].maxpassengers + "%");
+            if (hangar[i].realpassengers >= hangar[i].maxpassengers / 2) {
 
-                System.out.println("The plane has ID " + hangar[i].flight + " and has real passangers " + hangar[i].realpassengers + " max passangers on the board are " + hangar[i].maxpassengers);
+                hangar[i].percent = hangar[i].realpassengers * 100 / hangar[i].maxpassengers;
 
-           // }
+                System.out.println(hangar[i].percent);
 
-
-
-        //boolean unsorted = hangar[i] > 1;
+            }
+        }
 
 
-           // }
+        boolean unsorted = hangar.length > 1;
+        while (unsorted) {
+            boolean elementsSwitched = false;
+            for (int i = 1; i < hangar.length; i++) {
+
+                int currentElement = hangar[i].percent;
+                int previousElement = hangar[i - 1].percent;
+
+                if (previousElement > currentElement) {
+                    hangar[i].percent = previousElement;
+                    hangar[i - 1].percent = currentElement;
+
+
+                    elementsSwitched = true;
+                    unsorted = true;
+
+                }
+
+                if (!elementsSwitched) {
+                    unsorted = false;
+                }
+
+
+            }
         }
     }
-
-
 }
+
+
+//        hangar[y] = new Plane();
+//
+//            boolean unsorted = hangar[i].percent > 1;
+//            while (unsorted) {
+//                boolean elementsSwitched = false;
+//                for (int y = 1; y < hangar[i].percent; y++) {
+//                    int currentElement = hangar[i].percent ;
+//                    int previousElement = hangar[i-1].percent;
+//
+//                    if (previousElement > currentElement) {
+//                        elementsSwitched = true;
+//                        unsorted = true;
+//                        hangar[i-1].percent = currentElement;
+//                        hangar[i].percent = previousElement;
+//                    }
+//                    if (!elementsSwitched) {
+//                        unsorted = false;
+//                    }
+//                    System.out.println(hangar[i].percent);
+//                }
+
+
+// }
+// }
+
+
+
