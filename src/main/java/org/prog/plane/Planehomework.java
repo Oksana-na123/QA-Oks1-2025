@@ -20,13 +20,10 @@ public class Planehomework {
 
             hangar[i].realpassengers = random.nextInt(hangar[i].maxpassengers + 1);
 
-            if (hangar[i].realpassengers >= hangar[i].maxpassengers / 2) {
+            hangar[i].percent = hangar[i].realpassengers * 100 / hangar[i].maxpassengers;
 
-                hangar[i].percent = hangar[i].realpassengers * 100/ hangar[i].maxpassengers;
 
-                System.out.println(hangar[i].percent);
 
-            }
         }
 
 
@@ -36,27 +33,27 @@ public class Planehomework {
             for (int i = 1; i < hangar.length; i++) {
 
                 Plane currentElement = hangar[i];
-                Plane previousElement = hangar[i-1];
+                Plane previousElement = hangar[i - 1];
 
                 if (previousElement.percent > currentElement.percent) {
+
                     elementsSwitched = true;
                     unsorted = true;
 
                     hangar[i] = previousElement;
-                    hangar[i-1] = currentElement;
+                    hangar[i - 1] = currentElement;
 
                 }
+
 
                 if (!elementsSwitched) {
                     unsorted = false;
                 }
-
-                //System.out.println("The plane ID " + hangar[i].flight + " has seating places " + hangar[i].maxpassengers + " there is aboard " + hangar[i].realpassengers + " passengers");
             }
         }
         for (int i = 0; i < hangar.length; i++) {
             if (hangar[i] != null) {
-                System.out.println("The plane ID " + hangar[i].flight + " has seating places " + hangar[i].percent + hangar[i].maxpassengers + " there is aboard " + hangar[i].realpassengers + " passengers");
+                System.out.println("The plane ID " + hangar[i].flight + " has seating places " + hangar[i].percent + " precent " + hangar[i].maxpassengers + " there is aboard " + hangar[i].realpassengers + " passengers");
             }
         }
     }
