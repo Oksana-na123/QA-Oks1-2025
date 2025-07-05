@@ -6,7 +6,7 @@ public class CarService {
 
     private CarPainter vova = new CarPainter();
     private CarPainter sasha = new CarPainter();
-
+    private PolishCar oleg = new PolishCar();
 
     public void paintCar(Car2 carToPaint, String newCarColor, Car2 carToPolish ) {
         vova.breakDuration = 5;
@@ -30,9 +30,8 @@ public class CarService {
             vova.paintCar(carToPolish, "white");
             vova.polishCar(carToPaint);
 
-
-
         }
+        oleg.polishCar(carToPaint, newCarColor, "done");
     }
 
 
