@@ -36,7 +36,7 @@ public class HWPlane2 {
             System.out.println(random.nextInt(smallPlane.maxPassengers + 1));
 
 
-            System.out.println("We have" + " with ID " + flightNumber + " which has maximum number persons " + maxPassengers + " but real persons on the bord " + realypassengers);
+            System.out.println("We have" + " with ID " + flightNumber + " which   has maximum number persons, " + maxPassengers + " but real persons on the bord " + realypassengers);
         }
     }
 }
