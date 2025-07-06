@@ -33,6 +33,8 @@ public class Session3 {
         mazda.driveTo("Lviv", "Odessa");
         System.out.println("===================================");
         mazda.driveTo("Lviv", "Odessa", "Dnipro");
+        System.out.println("===================================");
+        mazda.driveTo("Lviv", "Odessa", "Dnipro", "0", "no");
 
 //        driveTo(mazda);
 //        System.out.println("==============================");

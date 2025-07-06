@@ -15,8 +15,18 @@ public class Mazda implements ICar {
     }
 
     public void driveTo(String destination, String from, String stoppingAt) {
-        System.out.println("Mazada drives from " + from + " to " + destination);
-        System.out.println("Mazada stopping at " + stoppingAt);
+        driveTo(destination, from, stoppingAt, "0");
+    }
+
+    public void driveTo(String destination, String from, String stoppingAt, String passenger) {
+        driveTo(destination, from, stoppingAt, passenger, "no");
+    }
+
+    public void driveTo(String destination, String from, String stoppingAt, String passenger, String payment) {
+        System.out.println("Mazda drives from " + from + " to " + destination);
+        System.out.println("Mazda stopping at " + stoppingAt);
+        System.out.println("Passenger count: " + passenger);
+        System.out.println("Payment split: " + payment);
     }
 
     public void manualGearSwitch(int gear) {
