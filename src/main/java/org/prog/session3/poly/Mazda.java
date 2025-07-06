@@ -26,7 +26,7 @@ public class Mazda implements ICar {
         System.out.println("Mazda drives from " + from + " to " + destination);
         System.out.println("Mazda stopping at " + stoppingAt);
         System.out.println("Passenger count: " + passenger);
-        System.out.println("Payment split: " + payment);
+        System.out.println("Payment gas split: " + payment);
     }
 
     public void manualGearSwitch(int gear) {
