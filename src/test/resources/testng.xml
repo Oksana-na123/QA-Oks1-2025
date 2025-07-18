@@ -1,15 +1,6 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Client side functionality" verbose="1">
-    <test name="Registration Tests">
-        <classes>
-            <class name="org.prog.session6.TestNG"/>
-        </classes>
-    </test>
-    <test name="Make order and pay for it">
-        <classes>
-            <class name="org.prog.session6.TestNG2"/>
-        </classes>
-    </test>
+
     <test name="Do my Home Work">
         <classes>
             <class name="org.prog.session6.HwTest"/>
