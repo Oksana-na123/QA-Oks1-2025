@@ -1,6 +1,5 @@
 package org.prog.session6;
 
-import org.junit.jupiter.api.AfterAll;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;

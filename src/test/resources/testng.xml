@@ -10,4 +10,9 @@
             <class name="org.prog.session6.TestNG2"/>
         </classes>
     </test>
+    <test name="Do my Home Work">
+        <classes>
+            <class name="org.prog.session6.HwTest"/>
+        </classes>
+    </test>
 </suite>
