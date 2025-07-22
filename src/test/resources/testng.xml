@@ -10,4 +10,9 @@
             <class name="org.prog.session7.WebTest"/>
         </classes>
     </test>
+    <test name="Find IPhon 16 an the site Allo">
+        <classes>
+            <class name="org.prog.session7.JunitAllo"/>
+        </classes>
+    </test>
 </suite>
