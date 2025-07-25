@@ -12,7 +12,7 @@
     </test>
     <test name="Find IPhon 16 an the site Allo">
         <classes>
-            <class name="org.prog.session7.JunitAllo"/>
+            <class name="org.prog.session7.NgAllo"/>
         </classes>
     </test>
 </suite>
