@@ -22,7 +22,7 @@ public class AlloPageTest {
     @Test
     public void myAlloTest(){
        alloPage.loadPage();
-       alloPage.searchIphone();
+       alloPage.searchForSomething();
     }
 }
 

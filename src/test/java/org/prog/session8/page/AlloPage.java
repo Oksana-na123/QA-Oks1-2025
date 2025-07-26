@@ -19,7 +19,7 @@ public class AlloPage {
         public void loadPage() {
             driver.get("https://allo.ua");
         }
-        public void searchIphone(){
+        public void searchForSomething(){
             WebElement search = driver.findElement(By.id("search-form__input"));
             search.sendKeys("IPhone 16");
             search.sendKeys(Keys.ENTER);
