@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.prog.session8.page.AlloPage;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
@@ -14,15 +15,25 @@ public class AlloPageTest {
     private AlloPage alloPage;
 
     @BeforeSuite
-    public void initWebDriver(){
+    public void initWebDriver() {
         driver = new ChromeDriver();
         alloPage = new AlloPage(driver);
     }
 
     @Test
-    public void myAlloTest(){
-       alloPage.loadPage();
-       alloPage.searchForSomething();
+    public void myAlloTest() {
+        alloPage.loadPage();
+        alloPage.searchForSomething("Iphone");
+        alloPage.searchForSomething("Sumsung");
+        alloPage.isHryvniaSign("currency");
     }
+    @AfterClass
+    public void tearDown() {
+        if (driver != null) {
+            driver.quit();
+        }
+    }
+
 }
+
 
