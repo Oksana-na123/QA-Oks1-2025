@@ -1,11 +1,13 @@
 package org.prog.session8.page;
 
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.asserts.Assertion;
 
 import java.time.Duration;
 
@@ -36,13 +38,16 @@ public class AlloPage {
 
    public boolean isHryvniaSign(String c) {
        WebDriverWait webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(20));
-        WebElement hryvniaSing = driver.findElement(By.className(c));
+        WebElement hryvniaSing = driver.findElement(By.xpath("//*[contains(text(),'₴')]"));
+       System.out.println(driver.findElement(By.xpath("//*[contains(text(),'₴')]")));
         if(hryvniaSing.getText().contains(c)) {
             return true;
         } else {
 
            return false;
+
        }
+
 
 
 
