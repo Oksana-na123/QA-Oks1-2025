@@ -40,27 +40,27 @@ public class MySqlTests {
     @Test
     public void testWriteToDB() throws SQLException, ClassNotFoundException {
         Statement statement = connection.createStatement();
-        statement.execute("INSERT INTO Persons (FirstName, LastName, Gender, Title, Nat) " +
-                "VALUES ('Bill', 'Smith', 'male', 'Mr', 'US')");
+        statement.execute("INSERT INTO Persons (FirstName, LastName, Gender, Title, Nat, City, Street, Number) " +
+                "VALUES ('Bill', 'Smith', 'male', 'Mr', 'US', 'Albany', '52-street', '85')");
     }
 
-    @Test
-    public void testReadFromDB() throws SQLException, ClassNotFoundException {
-        Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery("SELECT * FROM Persons");
-        while (resultSet.next()) {
-            System.out.print(resultSet.getString("FirstName") + " ");
-            System.out.println(resultSet.getString("LastName"));
-        }
-    }
+//    @Test
+//    public void testReadFromDB() throws SQLException, ClassNotFoundException {
+//        Statement statement = connection.createStatement();
+//        ResultSet resultSet = statement.executeQuery("SELECT * FROM Persons");
+//        while (resultSet.next()) {
+//            System.out.print(resultSet.getString("FirstName") + " ");
+//            System.out.println(resultSet.getString("LastName"));
+//        }
+//    }
 
     @Test
     public void testWriteToDBFromAPI() throws SQLException, ClassNotFoundException {
         ResultsDto resultsDto = getUsers(3);
         List<PersonDto> personDtos = resultsDto.getResults();
-//            Statement statement = connection.createStatement();
+          //  Statement statement = connection.createStatement();
         PreparedStatement preparedStatement = connection.prepareStatement(
-                "INSERT INTO Persons (FirstName, LastName, Gender, Title, Nat) VALUES (?,?,?,?,?)"
+                "INSERT INTO Persons (FirstName, LastName, Gender, Title, Nat, City, Street, Number) VALUES (?,?,?,?,?,?,?,?)"
         );
 
         personDtos.forEach(dto -> executeStatement(dto, preparedStatement));
@@ -91,6 +91,9 @@ public class MySqlTests {
             preparedStatement.setString(3, dto.getGender());
             preparedStatement.setString(4, dto.getName().getTitle());
             preparedStatement.setString(5, dto.getNat());
+            preparedStatement.setString(6, dto.getLocation().getCity());
+            preparedStatement.setString(7, dto.getLocation().getStreet().getName());
+            preparedStatement.setString(8, dto.getLocation().getStreet().getNumber());
             preparedStatement.execute();
         } catch (Exception e) {
             System.out.println("Error inserting person: " + dto);
@@ -101,7 +104,7 @@ public class MySqlTests {
         Response respones = RestAssured.given()
                 .baseUri("https://randomuser.me/")
                 .basePath("api/")
-                .queryParam("inc", "gender,name,nat")
+                .queryParam("inc", "gender,name,nat,location")
                 .queryParam("results", amount)
                 .queryParam("noinfo")
                 .get();
