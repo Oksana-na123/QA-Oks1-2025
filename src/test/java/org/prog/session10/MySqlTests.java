@@ -91,9 +91,9 @@ public class MySqlTests {
             preparedStatement.setString(3, dto.getGender());
             preparedStatement.setString(4, dto.getName().getTitle());
             preparedStatement.setString(5, dto.getNat());
-            preparedStatement.setString(6, dto.getLocation().getCity());
+            preparedStatement.setString(6, dto.getLocation().getStreet().getNumber());
             preparedStatement.setString(7, dto.getLocation().getStreet().getName());
-            preparedStatement.setString(8, dto.getLocation().getStreet().getNumber());
+            preparedStatement.setString(8, dto.getLocation().getCity());
             preparedStatement.execute();
         } catch (Exception e) {
             System.out.println("Error inserting person: " + dto);
