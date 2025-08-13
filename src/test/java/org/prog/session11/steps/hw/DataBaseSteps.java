@@ -1,0 +1,54 @@
+package org.prog.session11.steps.hw;
+
+import io.cucumber.java.en.Given;
+import org.prog.session11.DataHolder;
+import org.prog.session9.PersonDto;
+import org.prog.session9.ResultsDto;
+import org.testng.Assert;
+
+import java.sql.*;
+import java.util.List;
+
+public class DataBaseSteps {
+    public static Connection connection;
+
+    @Given("I store {string} to Person table")
+    public void storePersonsToPersonTable(String alias) throws SQLException {
+        System.out.println("===========================================================");
+        ResultsDto resultsDto = (ResultsDto) DataHolder.DATA.get(alias);
+        List<PersonDto> personDtos = resultsDto.getResults();
+        PreparedStatement preparedStatement = connection.prepareStatement(
+                "INSERT INTO Persons (FirstName, LastName, Gender, Title, Nat, City, Street, Number) VALUES (?,?,?,?,?,?,?,?)"
+        );
+        personDtos.forEach(dto -> executeStatement(dto, preparedStatement));
+    }
+
+    @Given("I choose a one random person from DB as {string}")
+    public void chooseRandomPersonFromDB(String alias) throws SQLException {
+        Statement statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery("SELECT * FROM Persons ORDER BY RAND() LIMIT 1");
+        if (resultSet.next()) {
+            DataHolder.DATA.put(alias,
+                    resultSet.getString("FirstName") + " " +
+                            resultSet.getString("LastName"));
+        } else {
+            Assert.fail("No records found");
+        }
+    }
+
+    private void executeStatement(PersonDto dto, PreparedStatement preparedStatement) {
+        try {
+            preparedStatement.setString(1, dto.getName().getFirst());
+            preparedStatement.setString(2, dto.getName().getLast());
+            preparedStatement.setString(3, dto.getGender());
+            preparedStatement.setString(4, dto.getName().getTitle());
+            preparedStatement.setString(5, dto.getNat());
+            preparedStatement.setString(6, dto.getLocation().getCity());
+            preparedStatement.setString(7, dto.getLocation().getStreet().getName());
+            preparedStatement.setString(8, dto.getLocation().getStreet().getNumber());
+            preparedStatement.execute();
+        } catch (Exception e) {
+            System.out.println("Error inserting person: " + dto);
+        }
+    }
+}

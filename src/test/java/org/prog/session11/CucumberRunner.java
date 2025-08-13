@@ -13,7 +13,8 @@ import java.sql.SQLException;
 
 @CucumberOptions(
         features = "src/test/resources/features",
-        glue = "org.prog.session11.steps"
+        glue = {"org.prog.session11.steps", "org.prog.session11.steps.hw"}
+
 )
 public class CucumberRunner extends AbstractTestNGCucumberTests {
 

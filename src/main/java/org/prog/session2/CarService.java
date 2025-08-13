@@ -18,7 +18,7 @@ public class CarService {
 
             coffeeBreak(vova);
             sasha.paintCar(carToPolish, "white");
-            sasha.polishCar(carToPaint);
+
 
         } else {
             coffeeBreak(vova);
@@ -27,7 +27,7 @@ public class CarService {
 
             coffeeBreak(sasha);
             vova.paintCar(carToPolish, "white");
-            vova.polishCar(carToPaint);
+
 
 
 
